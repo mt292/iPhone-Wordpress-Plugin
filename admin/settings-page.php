@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     </h1>
     
     <div style="background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-        <h2>Welcome to iPhone Simulator for Digital Literacy! 🎉</h2>
+        <h2>Welcome to iPhone Simulator for Digital Literacy!</h2>
         <p style="font-size: 16px; line-height: 1.6;">
             This plugin helps you teach seniors digital literacy through interactive, realistic iPhone simulations.
             You can add the simulator to any page using a shortcode or through Elementor.
@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
             <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                 <h2>How to Use</h2>
                 
-                <h3>📝 Using Shortcode</h3>
+                <h3>Using Shortcode</h3>
                 <p>Add the simulator to any page or post with this shortcode:</p>
                 <code style="display: block; background: #f5f5f5; padding: 15px; border-radius: 4px; margin: 10px 0; font-size: 14px;">
                     [iphone_simulator app="facetime" lesson="call-martin" tutorial="true" apps="facetime,messages,phone,facebook,twitter,whatsapp"]
@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) {
                     <li><strong>apps</strong> - Available apps (comma-separated)</li>
                 </ul>
                 
-                <h3 style="margin-top: 30px;">🎨 Using with Elementor</h3>
+                <h3 style="margin-top: 30px;">Using with Elementor</h3>
                 <ol style="line-height: 1.8;">
                     <li>Edit any page with Elementor</li>
                     <li>Search for "iPhone Simulator" in the widgets panel</li>
@@ -140,18 +140,18 @@ if (!defined('ABSPATH')) {
                     </code>
                 </div>
                 
-                <h3>📱 Features</h3>
+                <h3>Features</h3>
                 <ul style="line-height: 1.8;">
-                    <li>✅ Realistic iOS 18 design</li>
-                    <li>✅ Dynamic Island animation</li>
-                    <li>✅ Interactive FaceTime calls</li>
-                    <li>✅ Step-by-step tutorials</li>
-                    <li>✅ Mute/Camera controls</li>
-                    <li>✅ Fully responsive</li>
-                    <li>✅ Elementor integration</li>
+                    <li>Realistic iOS 18 design</li>
+                    <li>Dynamic Island animation</li>
+                    <li>Interactive FaceTime calls</li>
+                    <li>Step-by-step tutorials</li>
+                    <li>Mute/Camera controls</li>
+                    <li>Fully responsive</li>
+                    <li>Elementor integration</li>
                 </ul>
                 
-                <h3 style="margin-top: 25px;">📚 Available Lessons</h3>
+                <h3 style="margin-top: 25px;">Available Lessons</h3>
                 <div style="border-left: 3px solid #30d158; padding-left: 12px; margin: 10px 0;">
                     <strong>FaceTime: Call Martin</strong>
                     <p style="margin: 5px 0; font-size: 13px; color: #666;">Learn to make video calls, mute mic, hide camera, and end calls</p>
@@ -164,7 +164,7 @@ if (!defined('ABSPATH')) {
             </div>
             
             <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px;">
-                <h3>💡 Tips for Educators</h3>
+                <h3>Tips for Educators</h3>
                 <ul style="line-height: 1.8; font-size: 14px;">
                     <li>Start with tutorial mode enabled</li>
                     <li>Let students practice multiple times</li>
@@ -175,13 +175,16 @@ if (!defined('ABSPATH')) {
             </div>
             
             <div style="background: #f0f9ff; border: 2px solid #3b82f6; padding: 20px; border-radius: 8px; margin-top: 20px;">
-                <h3 style="margin-top: 0; color: #1e40af;">📧 Support & Updates</h3>
+                <h3 style="margin-top: 0; color: #1e40af;">Support & Updates</h3>
                 <p style="font-size: 14px; line-height: 1.6; color: #1e3a8a;">
                     Need help or have suggestions? Visit our GitHub repository for documentation, updates, and support.
                 </p>
                 <a href="https://github.com/mt292/iPhone-Wordpress-Plugin" target="_blank" style="display: inline-block; background: #3b82f6; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 6px; margin-top: 10px;">
                     View on GitHub
                 </a>
+                <p style="font-size: 12px; color: #64748b; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0;">
+                    Developed by <strong>Martin Topp</strong> | <a href="https://mtsaga.net" target="_blank" style="color: #3b82f6;">mtsaga.net</a>
+                </p>
             </div>
         </div>
     </div>

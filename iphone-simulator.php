@@ -4,7 +4,8 @@
  * Plugin URI: https://github.com/mt292/iPhone-Wordpress-Plugin
  * Description: Interactive iPhone simulator widget for teaching seniors digital literacy. Includes realistic iOS interface with apps like FaceTime, Messages, and more.
  * Version: 1.0.0
- * Author: MT
+ * Author: Martin Topp
+ * Author URI: https://mtsaga.net
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: iphone-simulator

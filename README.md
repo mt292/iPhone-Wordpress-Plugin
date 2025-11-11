@@ -260,7 +260,8 @@ GNU General Public License for more details.
 
 ## 👨‍💻 Author
 
-**MT**
+**Martin Topp**
+- Website: [mtsaga.net](https://mtsaga.net)
 - GitHub: [@mt292](https://github.com/mt292)
 
 ## 🙏 Acknowledgments

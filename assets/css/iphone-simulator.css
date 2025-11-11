@@ -17,8 +17,8 @@
 
 /* iPhone Device */
 .iphone-device {
-    width: 390px;
-    height: 844px;
+    width: 375px;
+    height: 667px;
     background: #000;
     border-radius: 55px;
     box-shadow: 
@@ -213,8 +213,9 @@
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .app-icon::before {
@@ -231,61 +232,38 @@
 /* iOS App Icons with Authentic Styling */
 .app-icon.facetime {
     background: linear-gradient(135deg, #7ed321 0%, #5fb709 100%);
-    background-image: url('../images/facetime.svg'), linear-gradient(135deg, #7ed321 0%, #5fb709 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 36px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: url('../images/facetime.svg');
+    background-size: 100% 100%;
 }
 
 .app-icon.messages {
     background: linear-gradient(135deg, #00d856 0%, #00b945 100%);
-    background-image: url('../images/messages.svg'), linear-gradient(135deg, #00d856 0%, #00b945 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 36px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: url('../images/messages.svg');
+    background-size: 100% 100%;
 }
 
 .app-icon.phone {
     background: linear-gradient(135deg, #30d158 0%, #28a745 100%);
-    background-image: url('../images/phone.png'), linear-gradient(135deg, #30d158 0%, #28a745 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 36px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: url('../images/phone.png');
+    background-size: 100% 100%;
 }
 
 .app-icon.facebook {
     background: #1877F2;
-    background-image: url('../images/facebook.png'), linear-gradient(135deg, #1877F2 0%, #1877F2 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-image: url('../images/facebook.png');
+    background-size: 100% 100%;
 }
 
 .app-icon.twitter {
     background: #1DA1F2;
-    background-image: url('../images/twitter.png'), linear-gradient(135deg, #1DA1F2 0%, #1DA1F2 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 28px;
+    background-image: url('../images/twitter.png');
+    background-size: 100% 100%;
 }
 
 .app-icon.whatsapp {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    background-image: url('../images/whatsapp.png'), linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    background-size: cover, cover;
-    background-position: center, center;
-    color: white;
-    font-size: 36px;
+    background-image: url('../images/whatsapp.png');
+    background-size: 100% 100%;
 }
 
 .app-icon.whatsapp {
