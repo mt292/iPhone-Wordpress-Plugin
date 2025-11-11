@@ -1,0 +1,20 @@
+{
+    "name": "mt292/iphone-wordpress-plugin",
+    "description": "iPhone Simulator for Digital Literacy - WordPress plugin",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Martin TOpp",
+            "homepage": "https://mtsaga.net/"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MT\\iPhoneSimulator\\": "includes/"
+        }
+    }
+}

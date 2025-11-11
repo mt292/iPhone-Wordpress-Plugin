@@ -1,0 +1,38 @@
+# Node
+node_modules/
+
+# Composer
+vendor/
+composer.lock
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/
+
+# WordPress
+.svn/
+wp-content/uploads/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# PHPStorm
+*.iml
+
+# Screenshots placeholder
+/assets/screenshots/*
+!/assets/screenshots/README.md

@@ -1,0 +1,16 @@
+{
+  "name": "iphone-simulator",
+  "version": "1.0.0",
+  "description": "Interactive iPhone simulator WordPress plugin",
+  "main": "assets/js/iphone-simulator.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "test": "echo \"No tests configured\" && exit 0",
+    "build": "echo \"No build step defined\" && exit 0"
+  },
+  "author": "MT",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  }
+}
