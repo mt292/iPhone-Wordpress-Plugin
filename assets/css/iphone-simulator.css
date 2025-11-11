@@ -1,0 +1,741 @@
+/**
+ * iPhone Simulator Styles
+ * Modern iOS 18+ design with realistic iPhone appearance
+ */
+
+/* Container */
+.iphone-simulator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 600px;
+    border-radius: 20px;
+    position: relative;
+}
+
+/* iPhone Device */
+.iphone-device {
+    width: 390px;
+    height: 844px;
+    background: #000;
+    border-radius: 55px;
+    box-shadow: 
+        0 0 0 12px #1c1c1e,
+        0 0 0 13px #2c2c2e,
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 0 6px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.iphone-device:hover {
+    transform: scale(0.98);
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 126px;
+    height: 37px;
+    background: #000;
+    border-radius: 19px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dynamic-island.expanded {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+/* Screen */
+.iphone-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 35px 0 35px;
+    height: 54px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    z-index: 999;
+}
+
+.status-time {
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-icon {
+    width: 20px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* App Content Area */
+.app-content {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    right: 0;
+    bottom: 34px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Home Screen */
+.home-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    padding: 20px 24px 80px 24px;
+    position: relative;
+}
+
+.home-screen-wallpaper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><filter id="blur"><feGaussianBlur stdDeviation="20"/></filter></defs><circle cx="100" cy="100" r="80" fill="%23fff" filter="url(%23blur)"/><circle cx="300" cy="300" r="100" fill="%23fff" filter="url(%23blur)"/></svg>');
+    background-size: cover;
+}
+
+/* App Grid */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 16px;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.app-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.app-icon-wrapper:active {
+    transform: scale(0.9);
+}
+
+.app-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.app-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+}
+
+.app-icon.facetime {
+    background: linear-gradient(135deg, #7ed321 0%, #5fb709 100%);
+}
+
+.app-icon.messages {
+    background: linear-gradient(135deg, #00d856 0%, #00b945 100%);
+}
+
+.app-icon.phone {
+    background: linear-gradient(135deg, #30d158 0%, #28a745 100%);
+}
+
+.app-icon.facebook {
+    background: linear-gradient(135deg, #4267B2 0%, #385898 100%);
+}
+
+.app-icon.twitter {
+    background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+}
+
+.app-icon.whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%);
+}
+
+.app-name {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.2px;
+}
+
+/* Dock */
+.dock {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-radius: 20px;
+    padding: 10px 16px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Home Indicator */
+.home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 5px;
+    background: #fff;
+    border-radius: 100px;
+    opacity: 0.6;
+}
+
+/* FaceTime App */
+.facetime-app {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    flex-direction: column;
+}
+
+.facetime-app.active {
+    display: flex;
+}
+
+/* FaceTime Header */
+.facetime-header {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.facetime-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.facetime-subtitle {
+    font-size: 15px;
+    color: #8e8e93;
+    margin: 0;
+}
+
+/* Contact Selection */
+.contact-selection {
+    padding: 30px 20px;
+}
+
+.contact-search {
+    background: rgba(118, 118, 128, 0.24);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.contact-search::placeholder {
+    color: rgba(235, 235, 245, 0.6);
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.contact-item {
+    background: rgba(44, 44, 46, 0.95);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.contact-item:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.contact-item:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.contact-item:only-child {
+    border-radius: 10px;
+}
+
+.contact-item:active {
+    background: rgba(58, 58, 60, 0.95);
+}
+
+.contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-name {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.contact-status {
+    color: #8e8e93;
+    font-size: 13px;
+    margin: 0;
+}
+
+.contact-call-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #30d158;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.contact-call-button:active {
+    transform: scale(0.9);
+}
+
+/* Calling Screen */
+.calling-screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, #1c1c1e 0%, #000 100%);
+}
+
+.calling-screen.active {
+    display: flex;
+}
+
+.caller-info {
+    text-align: center;
+}
+
+.caller-avatar-large {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    margin: 0 auto 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.caller-name {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+
+.call-status {
+    font-size: 17px;
+    color: #8e8e93;
+    margin: 0;
+}
+
+/* Video Call Screen */
+.video-call-screen {
+    display: none;
+    position: relative;
+    height: 100%;
+    background: #1c1c1e;
+}
+
+.video-call-screen.active {
+    display: block;
+}
+
+.remote-video {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}
+
+.remote-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 96px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.local-video {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 100px;
+    height: 140px;
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+.local-video.hidden {
+    opacity: 0.3;
+}
+
+.video-hidden-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #8e8e93;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+}
+
+.local-video.hidden .video-hidden-overlay {
+    display: flex;
+}
+
+/* Call Controls */
+.call-controls {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.control-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.control-button:active {
+    transform: scale(0.9);
+}
+
+.control-button.mute {
+    background: rgba(44, 44, 46, 0.95);
+    color: #fff;
+}
+
+.control-button.mute.active {
+    background: #fff;
+    color: #000;
+}
+
+.control-button.video {
+    background: rgba(44, 44, 46, 0.95);
+    color: #fff;
+}
+
+.control-button.video.active {
+    background: #fff;
+    color: #000;
+}
+
+.control-button.end-call {
+    background: #ff3b30;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+}
+
+/* Tutorial Overlay */
+.tutorial-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.tutorial-overlay.active {
+    display: flex;
+}
+
+.tutorial-content {
+    background: rgba(44, 44, 46, 0.98);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.tutorial-step {
+    color: #30d158;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 12px 0;
+}
+
+.tutorial-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+.tutorial-description {
+    color: #8e8e93;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+}
+
+.tutorial-button {
+    background: #30d158;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.tutorial-button:active {
+    transform: scale(0.95);
+    background: #28a745;
+}
+
+/* Highlight Animation */
+.highlight-element {
+    position: relative;
+    z-index: 10000;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(48, 209, 88, 0);
+    }
+}
+
+/* Loading States */
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .iphone-device {
+        transform: scale(0.8);
+    }
+    
+    .iphone-device:hover {
+        transform: scale(0.82);
+    }
+}
+
+@media (max-width: 480px) {
+    .iphone-device {
+        transform: scale(0.7);
+    }
+    
+    .iphone-device:hover {
+        transform: scale(0.72);
+    }
+    
+    .iphone-simulator-container {
+        padding: 20px 10px;
+    }
+}
+
+/* Smooth Transitions */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Back Button */
+.app-back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(44, 44, 46, 0.8);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.app-back-button:active {
+    transform: scale(0.9);
+    background: rgba(58, 58, 60, 0.9);
+}
