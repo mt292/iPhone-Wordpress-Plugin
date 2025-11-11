@@ -97,6 +97,10 @@
                 self.toggleVideo();
             });
             
+            this.container.on('click', '#speakerButton', function() {
+                self.toggleSpeaker();
+            });
+            
             this.container.on('click', '#endCallButton, #endCallEarly', function() {
                 self.endCall();
             });
@@ -222,6 +226,17 @@
             }
         }
 
+        toggleSpeaker() {
+            const $button = this.container.find('#speakerButton');
+            $button.toggleClass('active');
+            
+            if ($button.hasClass('active')) {
+                this.showNotification('Speaker on');
+            } else {
+                this.showNotification('Speaker off');
+            }
+        }
+
         endCall() {
             this.$videoCallScreen.removeClass('active').fadeOut(300);
             this.animateDynamicIsland();
@@ -229,6 +244,7 @@
             // Reset controls
             this.container.find('#muteButton').removeClass('active').html('');
             this.container.find('#videoButton').removeClass('active').html('');
+            this.container.find('#speakerButton').removeClass('active').html('');
             this.container.find('#localVideo').removeClass('hidden');
             
             setTimeout(() => {
@@ -313,7 +329,7 @@
                         title: 'Welcome to FaceTime',
                         description: 'Let\'s learn how to make a video call to Martin. We\'ll walk through each step together.',
                         action: () => {
-                            this.openApp('facetime');
+                            // Show tutorial overlay first, then open app when user clicks Start
                         },
                         buttonText: 'Start Lesson'
                     },
@@ -380,6 +396,23 @@
                         buttonText: 'Show Me'
                     },
                     {
+                        title: 'Turn On Speaker',
+                        description: 'The speaker button lets you use speakerphone during a call. Try tapping it now.',
+                        highlight: '#speakerButton',
+                        action: () => {
+                            const $speakerBtn = this.container.find('#speakerButton');
+                            $speakerBtn.addClass('highlight-element');
+                            
+                            $speakerBtn.one('click', () => {
+                                $speakerBtn.removeClass('highlight-element');
+                                setTimeout(() => {
+                                    this.nextTutorialStep();
+                                }, 1500);
+                            });
+                        },
+                        buttonText: 'Show Me'
+                    },
+                    {
                         title: 'End the Call',
                         description: 'When you\'re done talking, tap the red button to end the call. Try it now!',
                         highlight: '#endCallButton',
@@ -397,8 +430,8 @@
                         buttonText: 'Show Me'
                     },
                     {
-                        title: 'Great Job! 🎉',
-                        description: 'You\'ve learned how to make a FaceTime call, mute your mic, hide your camera, and end the call. Practice anytime!',
+                        title: 'Great Job!',
+                        description: 'You\'ve learned how to make a FaceTime call, mute your mic, hide your camera, use speaker, and end the call. Practice anytime!',
                         action: () => {
                             this.goHome();
                         },
@@ -447,8 +480,18 @@
             // Move to next step
             this.currentStep++;
             
+            // For first step, open FaceTime app after hiding overlay
+            if (this.currentStep === 1) {
+                setTimeout(() => {
+                    this.openApp('facetime');
+                    // Then show next tutorial step after app opens
+                    setTimeout(() => {
+                        this.showTutorialOverlay();
+                    }, 800);
+                }, 300);
+            }
             // Show next tutorial if available and not waiting for user action
-            if (this.currentStep < this.tutorialSteps.length && !step.highlight) {
+            else if (this.currentStep < this.tutorialSteps.length && !step.highlight) {
                 setTimeout(() => {
                     this.showTutorialOverlay();
                 }, step.autoAdvance || 800);

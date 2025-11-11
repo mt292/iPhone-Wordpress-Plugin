@@ -82,29 +82,31 @@
                                id="contactSearch">
                         
                         <div class="contact-list" id="contactList">
-                                                        <div class="contact-item" data-contact="martin">
+                                                                                <div class="contacts-list">
+                            <div class="contact-item" data-contact="martin">
                                 <div class="contact-avatar">M</div>
-                                <div class="contact-name">Martin Smith</div>
-                                <button class="contact-call-button"></button>
-                            </div>
-                            
-                            <div class="contact-item" data-contact="sarah">
-                                <div class="contact-avatar">S</div>
-                                <div class="contact-name">Sarah Johnson</div>
+                                <div class="contact-name">Martin T</div>
                                 <button class="contact-call-button"></button>
                             </div>
                             
                             <div class="contact-item" data-contact="david">
                                 <div class="contact-avatar">D</div>
-                                <div class="contact-name">David Lee</div>
+                                <div class="contact-name">David L</div>
                                 <button class="contact-call-button"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="emma">
-                                <div class="contact-avatar">E</div>
-                                <div class="contact-name">Emma Davis</div>
+                            <div class="contact-item" data-contact="maggie">
+                                <div class="contact-avatar">M</div>
+                                <div class="contact-name">Maggie T</div>
                                 <button class="contact-call-button"></button>
                             </div>
+                            
+                            <div class="contact-item" data-contact="avery">
+                                <div class="contact-avatar">A</div>
+                                <div class="contact-name">Avery H</div>
+                                <button class="contact-call-button"></button>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     
@@ -132,12 +134,15 @@
                         </div>
                         
                         <div class="call-controls">
+                            <button class="control-button flip" id="flipButton" title="Flip Camera">
+                            </button>
+                            <button class="control-button speaker" id="speakerButton" title="Speaker">
+                            </button>
                             <button class="control-button mute" id="muteButton" title="Mute/Unmute">
                             </button>
-                            <button class="control-button end-call" id="endCallButton" title="End Call">
-                                ✖
-                            </button>
                             <button class="control-button video" id="videoButton" title="Hide/Show Camera">
+                            </button>
+                            <button class="control-button end-call" id="endCallButton" title="End Call">
                             </button>
                         </div>
                     </div>

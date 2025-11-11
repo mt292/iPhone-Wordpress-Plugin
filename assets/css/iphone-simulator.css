@@ -17,8 +17,8 @@
 
 /* iPhone Device */
 .iphone-device {
-    width: 375px;
-    height: 667px;
+    width: 390px;
+    height: 844px;
     background: #000;
     border-radius: 55px;
     box-shadow: 
@@ -580,13 +580,13 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 24px;
-    align-items: center;
+    gap: 20px;
+    align-items: flex-end;
 }
 
 .control-button {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     border: none;
     display: flex;
@@ -603,6 +603,71 @@
     transform: scale(0.9);
 }
 
+/* Flip Camera Button */
+.control-button.flip {
+    background: rgba(44, 44, 46, 0.95);
+}
+
+.control-button.flip::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.control-button.flip::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(135deg);
+    margin-top: -6px;
+    margin-left: 8px;
+}
+
+/* Speaker Button */
+.control-button.speaker {
+    background: rgba(44, 44, 46, 0.95);
+}
+
+.control-button.speaker::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    background: white;
+    clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 70%);
+}
+
+.control-button.speaker::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 0 50% 0 0;
+}
+
+.control-button.speaker.active {
+    background: #fff;
+}
+
+.control-button.speaker.active::before {
+    background: black;
+}
+
+.control-button.speaker.active::after {
+    border-color: black;
+}
+
+/* Mute Button */
 .control-button.mute {
     background: rgba(44, 44, 46, 0.95);
     color: #fff;
@@ -626,6 +691,7 @@
     background: black;
 }
 
+/* Video Button */
 .control-button.video {
     background: rgba(44, 44, 46, 0.95);
     color: #fff;
@@ -664,19 +730,23 @@
     border-left-color: black;
 }
 
+/* End Call Button */
 .control-button.end-call {
     background: #ff3b30;
     color: #fff;
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
     font-size: 28px;
 }
 
 .control-button.end-call::before {
-    content: '✖';
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 6px;
+    background: white;
+    border-radius: 3px;
+    transform: rotate(135deg);
 }
 
 /* Tutorial Overlay */
