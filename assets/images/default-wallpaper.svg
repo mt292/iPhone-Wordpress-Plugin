@@ -1,0 +1,23 @@
+<svg width="390" height="844" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="40" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#bg1)"/>
+  
+  <!-- Glowing orbs for depth -->
+  <circle cx="100" cy="200" r="150" fill="#7dd3fc" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="300" cy="600" r="180" fill="#a5b4fc" opacity="0.25" filter="url(#glow)"/>
+  <circle cx="50" cy="700" r="120" fill="#c4b5fd" opacity="0.2" filter="url(#glow)"/>
+</svg>

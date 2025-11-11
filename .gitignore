@@ -36,3 +36,8 @@ wp-content/uploads/
 # Screenshots placeholder
 /assets/screenshots/*
 !/assets/screenshots/README.md
+
+# Custom wallpaper (keep default)
+/assets/images/wallpaper.png
+!/assets/images/default-wallpaper.svg
+!/assets/images/README.md

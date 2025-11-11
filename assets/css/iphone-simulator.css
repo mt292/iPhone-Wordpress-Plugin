@@ -99,6 +99,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+/* Status bar icons using CSS */
+.status-signal::before {
+    content: '';
+    width: 16px;
+    height: 12px;
+    background: linear-gradient(90deg, 
+        #fff 0%, #fff 22%, transparent 22%, transparent 28%,
+        #fff 28%, #fff 50%, transparent 50%, transparent 56%,
+        #fff 56%, #fff 78%, transparent 78%, transparent 84%,
+        #fff 84%, #fff 100%
+    );
+    background-size: 100% 100%;
+}
+
+.status-wifi::before {
+    content: '';
+    width: 15px;
+    height: 11px;
+    border: 2px solid #fff;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+}
+
+.status-battery::before {
+    content: '';
+    width: 24px;
+    height: 11px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    position: relative;
+    background: linear-gradient(to right, #34c759 0%, #34c759 80%, transparent 80%);
+}
+
+.status-battery::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    width: 2px;
+    height: 5px;
+    background: #fff;
+    border-radius: 0 1px 1px 0;
 }
 
 /* App Content Area */
@@ -127,9 +172,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><filter id="blur"><feGaussianBlur stdDeviation="20"/></filter></defs><circle cx="100" cy="100" r="80" fill="%23fff" filter="url(%23blur)"/><circle cx="300" cy="300" r="100" fill="%23fff" filter="url(%23blur)"/></svg>');
+    background-image: url('../images/wallpaper.png'), url('../images/default-wallpaper.svg');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* App Grid */
@@ -167,6 +213,8 @@
     position: relative;
     overflow: hidden;
     transition: all 0.2s ease;
+    background-size: cover;
+    background-position: center;
 }
 
 .app-icon::before {
@@ -176,28 +224,68 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 50%);
     pointer-events: none;
 }
 
+/* iOS App Icons with Authentic Styling */
 .app-icon.facetime {
     background: linear-gradient(135deg, #7ed321 0%, #5fb709 100%);
+    background-image: url('../images/facetime.svg'), linear-gradient(135deg, #7ed321 0%, #5fb709 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .app-icon.messages {
     background: linear-gradient(135deg, #00d856 0%, #00b945 100%);
+    background-image: url('../images/messages.svg'), linear-gradient(135deg, #00d856 0%, #00b945 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .app-icon.phone {
     background: linear-gradient(135deg, #30d158 0%, #28a745 100%);
+    background-image: url('../images/phone.png'), linear-gradient(135deg, #30d158 0%, #28a745 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .app-icon.facebook {
-    background: linear-gradient(135deg, #4267B2 0%, #385898 100%);
+    background: #1877F2;
+    background-image: url('../images/facebook.png'), linear-gradient(135deg, #1877F2 0%, #1877F2 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .app-icon.twitter {
-    background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+    background: #1DA1F2;
+    background-image: url('../images/twitter.png'), linear-gradient(135deg, #1DA1F2 0%, #1DA1F2 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 28px;
+}
+
+.app-icon.whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    background-image: url('../images/whatsapp.png'), linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    color: white;
+    font-size: 36px;
 }
 
 .app-icon.whatsapp {
@@ -369,6 +457,18 @@
     font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    position: relative;
+}
+
+.contact-call-button::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    clip-path: polygon(
+        30% 20%, 45% 20%, 45% 35%, 60% 35%, 60% 50%, 45% 50%, 45% 65%, 30% 65%, 30% 50%, 15% 50%, 15% 35%, 30% 35%
+    );
 }
 
 .contact-call-button:active {
@@ -518,6 +618,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 .control-button:active {
@@ -529,9 +630,22 @@
     color: #fff;
 }
 
+.control-button.mute::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 24px;
+    background: white;
+    clip-path: polygon(0 30%, 30% 30%, 30% 20%, 60% 50%, 30% 80%, 30% 70%, 0 70%);
+}
+
 .control-button.mute.active {
     background: #fff;
     color: #000;
+}
+
+.control-button.mute.active::before {
+    background: black;
 }
 
 .control-button.video {
@@ -539,9 +653,37 @@
     color: #fff;
 }
 
+.control-button.video::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 16px;
+    background: white;
+    border-radius: 3px;
+}
+
+.control-button.video::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid white;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
 .control-button.video.active {
     background: #fff;
     color: #000;
+}
+
+.control-button.video.active::before {
+    background: black;
+}
+
+.control-button.video.active::after {
+    border-left-color: black;
 }
 
 .control-button.end-call {
@@ -550,6 +692,13 @@
     width: 70px;
     height: 70px;
     font-size: 28px;
+}
+
+.control-button.end-call::before {
+    content: '✖';
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 /* Tutorial Overlay */

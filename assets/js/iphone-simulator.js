@@ -214,10 +214,10 @@
             $localVideo.toggleClass('hidden');
             
             if ($button.hasClass('active')) {
-                $button.html('📷');
+                $button.html('');
                 this.showNotification('Camera hidden');
             } else {
-                $button.html('📹');
+                $button.html('');
                 this.showNotification('Camera on');
             }
         }
@@ -227,8 +227,8 @@
             this.animateDynamicIsland();
             
             // Reset controls
-            this.container.find('#muteButton').removeClass('active').html('🎤');
-            this.container.find('#videoButton').removeClass('active').html('📹');
+            this.container.find('#muteButton').removeClass('active').html('');
+            this.container.find('#videoButton').removeClass('active').html('');
             this.container.find('#localVideo').removeClass('hidden');
             
             setTimeout(() => {

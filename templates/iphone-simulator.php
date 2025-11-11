@@ -15,9 +15,9 @@
             <div class="status-bar">
                 <div class="status-time"><?php echo date('g:i'); ?></div>
                 <div class="status-icons">
-                    <span class="status-icon">📶</span>
-                    <span class="status-icon">📡</span>
-                    <span class="status-icon">🔋</span>
+                    <span class="status-icon status-signal"></span>
+                    <span class="status-icon status-wifi"></span>
+                    <span class="status-icon status-battery"></span>
                 </div>
             </div>
             
@@ -31,12 +31,12 @@
                         <?php
                         $apps_array = explode(',', $atts['apps']);
                         $app_configs = array(
-                            'facetime' => array('name' => 'FaceTime', 'icon' => '📹'),
-                            'messages' => array('name' => 'Messages', 'icon' => '💬'),
-                            'phone' => array('name' => 'Phone', 'icon' => '📞'),
+                            'facetime' => array('name' => 'FaceTime', 'icon' => ''),
+                            'messages' => array('name' => 'Messages', 'icon' => ''),
+                            'phone' => array('name' => 'Phone', 'icon' => ''),
                             'facebook' => array('name' => 'Facebook', 'icon' => 'f'),
-                            'twitter' => array('name' => 'Twitter', 'icon' => '🐦'),
-                            'whatsapp' => array('name' => 'WhatsApp', 'icon' => '💚')
+                            'twitter' => array('name' => 'Twitter', 'icon' => '𝕏'),
+                            'whatsapp' => array('name' => 'WhatsApp', 'icon' => '')
                         );
                         
                         foreach ($apps_array as $app) {
@@ -56,9 +56,9 @@
                     
                     <!-- Dock -->
                     <div class="dock">
-                        <div class="app-icon" style="background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);">🌐</div>
-                        <div class="app-icon" style="background: linear-gradient(135deg, #FF2D55 0%, #D70015 100%);">📧</div>
-                        <div class="app-icon" style="background: linear-gradient(135deg, #5E5CE6 0%, #3634A3 100%);">🎵</div>
+                        <div class="app-icon safari" style="background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%); color: white;"></div>
+                        <div class="app-icon mail" style="background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%); color: white;"></div>
+                        <div class="app-icon music" style="background: linear-gradient(135deg, #FF2D55 0%, #D70015 100%); color: white;"></div>
                     </div>
                     
                     <!-- Home Indicator -->
@@ -82,40 +82,28 @@
                                id="contactSearch">
                         
                         <div class="contact-list" id="contactList">
-                            <div class="contact-item" data-contact="martin">
+                                                        <div class="contact-item" data-contact="martin">
                                 <div class="contact-avatar">M</div>
-                                <div class="contact-info">
-                                    <p class="contact-name">Martin</p>
-                                    <p class="contact-status">Available</p>
-                                </div>
-                                <button class="contact-call-button">📹</button>
+                                <div class="contact-name">Martin Smith</div>
+                                <button class="contact-call-button"></button>
                             </div>
                             
                             <div class="contact-item" data-contact="sarah">
-                                <div class="contact-avatar" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);">S</div>
-                                <div class="contact-info">
-                                    <p class="contact-name">Sarah Johnson</p>
-                                    <p class="contact-status">Available</p>
-                                </div>
-                                <button class="contact-call-button">📹</button>
+                                <div class="contact-avatar">S</div>
+                                <div class="contact-name">Sarah Johnson</div>
+                                <button class="contact-call-button"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="john">
-                                <div class="contact-avatar" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">J</div>
-                                <div class="contact-info">
-                                    <p class="contact-name">John Smith</p>
-                                    <p class="contact-status">Available</p>
-                                </div>
-                                <button class="contact-call-button">📹</button>
+                            <div class="contact-item" data-contact="david">
+                                <div class="contact-avatar">D</div>
+                                <div class="contact-name">David Lee</div>
+                                <button class="contact-call-button"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="emily">
-                                <div class="contact-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">E</div>
-                                <div class="contact-info">
-                                    <p class="contact-name">Emily Davis</p>
-                                    <p class="contact-status">Available</p>
-                                </div>
-                                <button class="contact-call-button">📹</button>
+                            <div class="contact-item" data-contact="emma">
+                                <div class="contact-avatar">E</div>
+                                <div class="contact-name">Emma Davis</div>
+                                <button class="contact-call-button"></button>
                             </div>
                         </div>
                     </div>
@@ -140,19 +128,16 @@
                         </div>
                         
                         <div class="local-video" id="localVideo">
-                            👤
                             <div class="video-hidden-overlay">Camera Off</div>
                         </div>
                         
                         <div class="call-controls">
                             <button class="control-button mute" id="muteButton" title="Mute/Unmute">
-                                🎤
                             </button>
                             <button class="control-button end-call" id="endCallButton" title="End Call">
                                 ✖
                             </button>
                             <button class="control-button video" id="videoButton" title="Hide/Show Camera">
-                                📹
                             </button>
                         </div>
                     </div>
