@@ -23,41 +23,24 @@
         }
 
         init() {
-            // Initialize Framework7
+            // Initialize Framework7 (minimal setup, we'll handle navigation manually)
             this.app = new Framework7({
                 el: '#app',
                 name: 'iPhone Simulator',
                 theme: 'ios',
                 view: {
                     pushState: false,
-                    animate: true
-                },
-                routes: [
-                    {
-                        path: '/',
-                        componentUrl: './home.html'
-                    },
-                    {
-                        path: '/facetime/',
-                        template: document.getElementById('facetime-page-template').innerHTML,
-                        on: {
-                            pageInit: () => this.onFaceTimePageInit()
-                        }
-                    },
-                    {
-                        path: '/video-call/:contact',
-                        template: document.getElementById('video-call-template').innerHTML,
-                        on: {
-                            pageInit: (e, page) => this.onVideoCallPageInit(page)
-                        }
-                    }
-                ]
+                    animate: false
+                }
             });
 
             // Get main view
-            this.mainView = this.app.views.create('.view-main', {
-                url: '/'
-            });
+            this.mainView = this.app.views.create('.view-main');
+
+            // Store references to page elements
+            this.$homePage = $('.page[data-name="home"]');
+            this.$faceTimePage = null;
+            this.$videoCallPage = null;
 
             this.attachEventListeners();
             
@@ -75,35 +58,69 @@
         attachEventListeners() {
             const self = this;
             
-            // App icon clicks
-            this.$container.on('click', '.app-icon[data-app]', function(e) {
+            // App icon clicks - use event delegation on container
+            this.$container.on('click', '.app-icon', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 const app = $(this).data('app');
-                self.openApp(app);
+                if (app) {
+                    console.log('Opening app:', app);
+                    self.openApp(app);
+                }
             });
 
             // Tutorial button
-            $('#tutorialButton').on('click', () => this.nextTutorialStep());
+            $(document).on('click', '#tutorialButton', () => this.nextTutorialStep());
 
             // Incoming call actions
-            $('#acceptCall').on('click', () => this.acceptIncomingCall());
-            $('#declineCall').on('click', () => this.declineIncomingCall());
+            $(document).on('click', '#acceptCall', () => this.acceptIncomingCall());
+            $(document).on('click', '#declineCall', () => this.declineIncomingCall());
         }
 
         openApp(appName) {
             if (appName === 'facetime') {
-                this.mainView.router.navigate('/facetime/');
+                this.showFaceTimePage();
             } else {
                 // Show placeholder for other apps
                 this.app.dialog.alert('Coming soon...', appName.charAt(0).toUpperCase() + appName.slice(1));
             }
         }
 
+        showFaceTimePage() {
+            // Hide home page
+            this.$homePage.hide();
+            
+            // Create FaceTime page if it doesn't exist
+            if (!this.$faceTimePage) {
+                const template = document.getElementById('facetime-page-template').innerHTML;
+                this.mainView.$el.append(template);
+                this.$faceTimePage = $('.page[data-name="facetime"]');
+                this.onFaceTimePageInit();
+            } else {
+                this.$faceTimePage.show();
+            }
+        }
+
+        goHome() {
+            // Hide all app pages
+            if (this.$faceTimePage) this.$faceTimePage.hide();
+            if (this.$videoCallPage) this.$videoCallPage.hide();
+            
+            // Show home page
+            this.$homePage.show();
+        }
+
         onFaceTimePageInit() {
             const self = this;
             
+            // Attach back button handler
+            this.$faceTimePage.find('.link.back').off('click').on('click', function(e) {
+                e.preventDefault();
+                self.goHome();
+            });
+            
             // Attach contact card click handlers
-            $('.contact-card').on('click', function() {
+            this.$faceTimePage.find('.contact-card').off('click').on('click', function() {
                 const contact = $(this).data('contact');
                 self.startVideoCall(contact);
             });
@@ -114,34 +131,34 @@
             }
         }
 
-        onVideoCallPageInit(page) {
+        onVideoCallPageInit(contact) {
             const self = this;
-            const contact = page.route.params.contact;
+            const $videoPage = this.$videoCallPage;
 
             // Video control buttons
             let videoEnabled = true;
             let audioEnabled = true;
 
-            $('#videoButton').on('click', function() {
+            $videoPage.find('#videoButton').off('click').on('click', function() {
                 videoEnabled = !videoEnabled;
                 $(this).toggleClass('active');
                 if (!videoEnabled) {
-                    $('#localVideo').addClass('video-off').html('<div style="font-size: 24px;">Camera Off</div>');
+                    $videoPage.find('#localVideo').addClass('video-off').html('<div style="font-size: 24px;">Camera Off</div>');
                 } else {
-                    $('#localVideo').removeClass('video-off').html('<div style="font-size: 32px;">📹</div>');
+                    $videoPage.find('#localVideo').removeClass('video-off').html('<div style="font-size: 32px;">📹</div>');
                 }
             });
 
-            $('#muteButton').on('click', function() {
+            $videoPage.find('#muteButton').off('click').on('click', function() {
                 audioEnabled = !audioEnabled;
                 $(this).toggleClass('active');
             });
 
-            $('#moreButton').on('click', function() {
+            $videoPage.find('#moreButton').off('click').on('click', function() {
                 self.app.dialog.alert('Additional options coming soon...', 'More Options');
             });
 
-            $('#endCallButton').on('click', () => this.endCall());
+            $videoPage.find('#endCallButton').off('click').on('click', () => this.endCall());
 
             // Tutorial check
             if (this.currentLesson === 'call-martin' && this.lessonStep === 2) {
@@ -156,11 +173,28 @@
         }
 
         startVideoCall(contact) {
-            this.mainView.router.navigate(`/video-call/${contact}`);
+            // Hide FaceTime page
+            if (this.$faceTimePage) this.$faceTimePage.hide();
+            
+            // Create video call page if it doesn't exist
+            if (!this.$videoCallPage) {
+                const template = document.getElementById('video-call-template').innerHTML;
+                this.mainView.$el.append(template);
+                this.$videoCallPage = $('.page[data-name="video-call"]');
+            } else {
+                this.$videoCallPage.show();
+            }
+            
+            this.currentContact = contact;
+            this.onVideoCallPageInit(contact);
         }
 
         endCall() {
-            this.mainView.router.back();
+            // Hide video call page
+            if (this.$videoCallPage) this.$videoCallPage.hide();
+            
+            // Show home page
+            this.goHome();
         }
 
         // Tutorial System

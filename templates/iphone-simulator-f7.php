@@ -36,7 +36,7 @@
                                 if (isset($app_configs[$app])) {
                                     $config = $app_configs[$app];
                                     ?>
-                                    <a href="/<?php echo esc_attr($app); ?>/" class="app-icon" data-app="<?php echo esc_attr($app); ?>">
+                                    <div class="app-icon" data-app="<?php echo esc_attr($app); ?>">
                                         <div class="app-icon-image" style="background: <?php echo esc_attr($config['gradient']); ?>">
                                             <?php if (file_exists(plugin_dir_path(__DIR__) . 'assets/images/' . $app . '.svg')): ?>
                                                 <img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/' . $app . '.svg'); ?>" alt="<?php echo esc_attr($config['name']); ?>">
@@ -45,7 +45,7 @@
                                             <?php endif; ?>
                                         </div>
                                         <div class="app-icon-label"><?php echo esc_html($config['name']); ?></div>
-                                    </a>
+                                    </div>
                                     <?php
                                 }
                             }
@@ -54,21 +54,21 @@
                         
                         <!-- Dock -->
                         <div class="dock">
-                            <a href="/phone/" class="app-icon" data-app="phone">
+                            <div class="app-icon" data-app="phone">
                                 <div class="app-icon-image" style="background: linear-gradient(135deg, #00d084 0%, #00b370 100%)">
                                     <img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/phone.png'); ?>" alt="Phone">
                                 </div>
-                            </a>
-                            <a href="/messages/" class="app-icon" data-app="messages">
+                            </div>
+                            <div class="app-icon" data-app="messages">
                                 <div class="app-icon-image" style="background: linear-gradient(135deg, #00d300 0%, #00b300 100%)">
                                     <img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/messages.svg'); ?>" alt="Messages">
                                 </div>
-                            </a>
-                            <a href="/safari/" class="app-icon" data-app="safari">
+                            </div>
+                            <div class="app-icon" data-app="safari">
                                 <div class="app-icon-image" style="background: linear-gradient(135deg, #007aff 0%, #0051d5 100%)">
                                     <img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/safari.svg'); ?>" alt="Safari">
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
