@@ -1,0 +1,424 @@
+/**
+ * iPhone Simulator Styles with Framework7
+ * Modern iOS design using Framework7 components
+ */
+
+/* Container - keeps custom iPhone device look */
+.iphone-simulator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 600px;
+    border-radius: 20px;
+    position: relative;
+}
+
+/* iPhone Device Frame */
+.iphone-device {
+    width: 390px;
+    height: 844px;
+    background: #000;
+    border-radius: 55px;
+    box-shadow: 
+        0 0 0 12px #1c1c1e,
+        0 0 0 13px #2c2c2e,
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.iphone-device:hover {
+    transform: scale(0.98);
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 126px;
+    height: 37px;
+    background: #000;
+    border-radius: 19px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Framework7 App Wrapper - fits inside iPhone */
+.framework7-root {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Custom status bar styling */
+.ios .statusbar {
+    background: transparent !important;
+}
+
+/* Custom wallpaper background for home view */
+.view-home .page-content {
+    background-image: url('../images/wallpaper.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Custom app icon grid */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 80px 24px 24px;
+}
+
+.app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.app-icon:active {
+    transform: scale(0.9);
+}
+
+.app-icon-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 13.5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.app-icon-image img,
+.app-icon-image svg {
+    width: 36px;
+    height: 36px;
+}
+
+.app-icon-label {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+/* Dock styling */
+.dock {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dock .app-icon-image {
+    width: 60px;
+    height: 60px;
+}
+
+/* FaceTime Contact Cards */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-card:active {
+    transform: scale(0.95);
+}
+
+.contact-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+}
+
+.contact-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.contact-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    font-size: 14px;
+    color: white;
+}
+
+/* Video Call Screen */
+.video-call-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #1c1c1e;
+}
+
+.remote-video {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+.local-video-pip {
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    width: 100px;
+    height: 140px;
+    background: linear-gradient(135deg, #3a3a3c 0%, #2c2c2e 100%);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+/* Video Call Controls - using Framework7 toolbar */
+.toolbar-video-controls {
+    background: rgba(28, 28, 30, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.video-control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+}
+
+.video-control-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.video-control-btn:active {
+    transform: scale(0.95);
+}
+
+.video-control-btn.btn-white {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.video-control-btn.btn-gray {
+    background: rgba(60, 60, 67, 0.85);
+    color: white;
+}
+
+.video-control-btn.btn-red {
+    background: #ff3b30;
+    color: white;
+}
+
+/* Tutorial overlay */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tutorial-content {
+    background: #1c1c1e;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.tutorial-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.tutorial-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+}
+
+.tutorial-button {
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Highlight element during tutorial */
+.highlight-element {
+    position: relative;
+    z-index: 19999;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 20px rgba(0, 122, 255, 0);
+    }
+}
+
+/* Incoming call screen */
+.incoming-call-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #1c1c1e 0%, #000 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 40px 60px;
+    z-index: 10001;
+}
+
+.caller-info {
+    text-align: center;
+    color: white;
+}
+
+.caller-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.caller-name {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.call-type {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.call-actions {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.call-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.call-action-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.call-action-icon.decline {
+    background: #ff3b30;
+    color: white;
+}
+
+.call-action-icon.accept {
+    background: #34c759;
+    color: white;
+}
+
+.call-action-label {
+    color: white;
+    font-size: 14px;
+}

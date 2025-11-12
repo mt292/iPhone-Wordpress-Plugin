@@ -239,11 +239,11 @@ You can add multiple simulators to one page:
 
 ## Security Notes
 
-- ✅ Plugin follows WordPress security standards
-- ✅ All user inputs are sanitized and escaped
-- ✅ Nonce verification for AJAX requests
-- ✅ No data is stored in the database (privacy-friendly)
-- ✅ No external API calls or tracking
+- Plugin follows WordPress security standards
+- All user inputs are sanitized and escaped
+- Nonce verification for AJAX requests
+- No data is stored in the database (privacy-friendly)
+- No external API calls or tracking
 
 ## Performance Tips
 
@@ -271,11 +271,11 @@ If you run into issues:
 
 Once installed and working:
 
-1. ✅ Explore all the tutorial steps
-2. ✅ Customize the settings to your needs
-3. ✅ Create practice pages for your students
-4. ✅ Gather feedback from users
-5. ✅ Check back for new lessons and features
+1. Explore all the tutorial steps
+2. Customize the settings to your needs
+3. Create practice pages for your students
+4. Gather feedback from users
+5. Check back for new lessons and features
 
 ## Video Tutorials (Coming Soon)
 
@@ -287,6 +287,6 @@ We're working on video tutorials to help you:
 
 ---
 
-**Congratulations! You're ready to teach digital literacy! 🎉**
+**Congratulations! You're ready to teach digital literacy!**
 
 Need help? Open an issue on [GitHub](https://github.com/mt292/iPhone-Wordpress-Plugin/issues).

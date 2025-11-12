@@ -60,25 +60,42 @@ class iPhone_Simulator_Plugin {
      * Enqueue CSS and JavaScript
      */
     public function enqueue_assets() {
-        // Enqueue CSS
+        // Enqueue Framework7 CSS
         wp_enqueue_style(
-            'iphone-simulator-css',
-            IPHONE_SIM_PLUGIN_URL . 'assets/css/iphone-simulator.css',
+            'framework7-bundle',
+            'https://cdn.jsdelivr.net/npm/framework7@8.3.3/css/framework7.bundle.min.css',
             array(),
+            '8.3.3'
+        );
+        
+        // Enqueue custom CSS
+        wp_enqueue_style(
+            'iphone-simulator-f7-css',
+            IPHONE_SIM_PLUGIN_URL . 'assets/css/iphone-simulator-f7.css',
+            array('framework7-bundle'),
             IPHONE_SIM_VERSION
         );
         
-        // Enqueue JavaScript
+        // Enqueue Framework7 JavaScript
         wp_enqueue_script(
-            'iphone-simulator-js',
-            IPHONE_SIM_PLUGIN_URL . 'assets/js/iphone-simulator.js',
-            array('jquery'),
+            'framework7-bundle',
+            'https://cdn.jsdelivr.net/npm/framework7@8.3.3/js/framework7.bundle.min.js',
+            array(),
+            '8.3.3',
+            true
+        );
+        
+        // Enqueue custom JavaScript
+        wp_enqueue_script(
+            'iphone-simulator-f7-js',
+            IPHONE_SIM_PLUGIN_URL . 'assets/js/iphone-simulator-f7.js',
+            array('jquery', 'framework7-bundle'),
             IPHONE_SIM_VERSION,
             true
         );
         
         // Localize script for AJAX
-        wp_localize_script('iphone-simulator-js', 'iphoneSimulator', array(
+        wp_localize_script('iphone-simulator-f7-js', 'iphoneSimulator', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('iphone_simulator_nonce'),
             'pluginUrl' => IPHONE_SIM_PLUGIN_URL
@@ -143,7 +160,7 @@ class iPhone_Simulator_Plugin {
      */
     public function render_iphone_simulator($atts) {
         ob_start();
-        include IPHONE_SIM_PLUGIN_DIR . 'templates/iphone-simulator.php';
+        include IPHONE_SIM_PLUGIN_DIR . 'templates/iphone-simulator-f7.php';
         return ob_get_clean();
     }
 }

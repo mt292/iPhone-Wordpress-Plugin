@@ -7,18 +7,18 @@
 
 An interactive iPhone simulator WordPress plugin designed to teach seniors digital literacy through realistic, hands-on tutorials.
 
-## 🎯 Features
+## Features
 
-- **🎨 Realistic iOS 18 Design** - Beautiful iPhone interface with Dynamic Island, rounded corners, and authentic iOS styling
-- **📱 Interactive Apps** - Fully functional simulations of FaceTime, Messages, Phone, Facebook, Twitter, and WhatsApp
-- **👨‍🏫 Step-by-Step Tutorials** - Guided lessons that walk users through each action
-- **🎮 Full Interactivity** - Click, tap, and interact just like a real iPhone
-- **⚙️ Elementor Integration** - Easy drag-and-drop widget for page builders
-- **📝 Shortcode Support** - Use anywhere with simple shortcodes
-- **📱 Responsive Design** - Works on all screen sizes
-- **♿ Senior-Friendly** - Large buttons, clear instructions, and patient pacing
+- **Realistic iOS 18 Design** - Beautiful iPhone interface with Dynamic Island, rounded corners, and authentic iOS styling
+- **Interactive Apps** - Fully functional simulations of FaceTime, Messages, Phone, Facebook, Twitter, and WhatsApp
+- **Step-by-Step Tutorials** - Guided lessons that walk users through each action
+- **Full Interactivity** - Click, tap, and interact just like a real iPhone
+- **Elementor Integration** - Easy drag-and-drop widget for page builders
+- **Shortcode Support** - Use anywhere with simple shortcodes
+- **Responsive Design** - Works on all screen sizes
+- **Senior-Friendly** - Large buttons, clear instructions, and patient pacing
 
-## 📱 Demo
+## Demo
 
 The plugin simulates a realistic iPhone with the following features:
 
@@ -34,7 +34,7 @@ The plugin simulates a realistic iPhone with the following features:
   - Progress tracking
   - Celebration on completion
 
-## 🚀 Installation
+## Installation
 
 ### Method 1: Upload via WordPress Admin
 
@@ -51,7 +51,7 @@ The plugin simulates a realistic iPhone with the following features:
 3. Go to WordPress Admin → Plugins
 4. Activate "iPhone Simulator for Digital Literacy"
 
-## 📖 Usage
+## Usage
 
 ### Using Shortcode
 
@@ -109,7 +109,7 @@ Go to **WordPress Admin → iPhone Simulator** to configure:
 - Tutorial speed (slow/normal/fast)
 - Avatar style preferences
 
-## 🎓 Available Lessons
+## Available Lessons
 
 ### FaceTime: Call Martin (`lesson="call-martin"`)
 A complete tutorial teaching users how to:
@@ -137,7 +137,7 @@ A tutorial teaching users how to:
 - WhatsApp: Send a message
 - Twitter: Compose a tweet
 
-## 🛠️ Technical Details
+## Technical Details
 
 ### File Structure
 
@@ -167,13 +167,13 @@ iphone-simulator/
 
 ### Browser Support
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ⚠️ IE11 (limited support)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- IE11 (limited support)
 
-## 🎨 Customization
+## Customization
 
 ### Custom CSS
 
@@ -205,7 +205,7 @@ Developers can extend the plugin by:
 3. **Custom Styling**: Override CSS classes
 4. **Hooks & Filters**: Use WordPress actions (coming in v1.1)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit issues and pull requests.
 
@@ -223,7 +223,7 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 - Test on multiple browsers
 - Ensure mobile responsiveness
 
-## 📝 Changelog
+## Changelog
 
 ### Version 1.0.0 (2025-11-11)
 - Initial release
@@ -234,23 +234,23 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 - Admin settings page
 - iOS 18 design with Dynamic Island
 
-## 🐛 Known Issues
+## Known Issues
 
 - Messages, Phone, and social media apps show "Coming Soon" placeholder
 - Tutorial system currently only supports FaceTime lessons
 - Camera feed is simulated (no actual video)
 
-## 🔮 Roadmap
+## Roadmap
 
 - [ ] Additional app simulations (Messages, Phone, etc.)
 - [ ] More tutorial lessons
 - [ ] Custom avatar uploads
 - [ ] Multiple language support
 - [ ] Accessibility improvements (screen reader support)
-- [ ] Advanced customization options
-- [ ] Export/import lesson configurations
+- Advanced customization options
+- Export/import lesson configurations
 
-## 📄 License
+## License
 
 This plugin is licensed under the GPL v2 or later.
 
@@ -268,19 +268,19 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 ```
 
-## 👨‍💻 Author
+## Author
 
 **Martin Topp**
 - Website: [mtsaga.net](https://mtsaga.net)
 - GitHub: [@mt292](https://github.com/mt292)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by the need to teach digital literacy to seniors
 - iOS design elements based on Apple's iOS 18
-- Built with ❤️ for educators and learners
+- Built with care for educators and learners
 
-## 💬 Support
+## Support
 
 For support, questions, or feature requests:
 - Open an issue on [GitHub](https://github.com/mt292/iPhone-Wordpress-Plugin/issues)
@@ -289,4 +289,4 @@ For support, questions, or feature requests:
 
 ---
 
-Made with 💚 to help seniors learn technology
+Made to help seniors learn technology
