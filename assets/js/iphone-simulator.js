@@ -42,6 +42,7 @@
             // Main screens
             this.$homeScreen = this.container.find('#homeScreen');
             this.$facetimeApp = this.container.find('#facetimeApp');
+            this.$incomingCallScreen = this.container.find('#incomingCallScreen');
             
             // FaceTime screens
             this.$contactSelection = this.container.find('#contactSelection');
@@ -69,7 +70,17 @@
                 self.goHome();
             });
             
-            // Contact call buttons
+            // Contact call buttons - Updated for new card layout
+            this.container.on('click', '.contact-card, .contact-video-btn', function(e) {
+                e.stopPropagation();
+                const $card = $(this).hasClass('contact-card') ? $(this) : $(this).closest('.contact-card');
+                const contactName = $card.find('.contact-card-name').text();
+                const contactAvatar = $card.find('.contact-card-avatar').text();
+                const contactGradient = $card.attr('style');
+                self.startCall(contactName, contactAvatar, contactGradient);
+            });
+            
+            // Old contact list support (backwards compatibility)
             this.container.on('click', '.contact-call-button, .contact-item', function(e) {
                 if (!$(e.target).hasClass('contact-call-button')) {
                     // Only trigger if clicking the button or the item itself
@@ -110,6 +121,15 @@
                 self.nextTutorialStep();
             });
             
+            // Incoming call buttons
+            this.container.on('click', '#acceptIncomingCall', function() {
+                self.acceptIncomingCall();
+            });
+            
+            this.container.on('click', '#declineIncomingCall', function() {
+                self.declineIncomingCall();
+            });
+            
             // Contact search
             this.container.on('input', '#contactSearch', function() {
                 self.filterContacts($(this).val());
@@ -133,16 +153,16 @@
                         this.container.find('#phoneApp').show().addClass('fade-in');
                         break;
                     default:
-                        // Other apps - show placeholder
-                        alert('This app is coming soon!');
+                        // Other apps - do nothing, just go back home
                         this.goHome();
                 }
             }, 300);
         }
 
         goHome() {
-            // Hide all apps
+            // Hide all apps and screens
             this.$facetimeApp.removeClass('active').fadeOut(300);
+            this.$incomingCallScreen.removeClass('active').fadeOut(300);
             this.container.find('#messagesApp, #phoneApp').hide();
             
             // Reset FaceTime screens
@@ -151,6 +171,36 @@
             this.$videoCallScreen.removeClass('active').hide();
             
             // Show home screen
+            setTimeout(() => {
+                this.$homeScreen.addClass('active').fadeIn(300);
+            }, 300);
+        }
+        
+        showIncomingCall() {
+            this.$homeScreen.removeClass('active');
+            this.$incomingCallScreen.addClass('active').fadeIn(300);
+            this.animateDynamicIsland(true);
+        }
+        
+        acceptIncomingCall() {
+            // Hide incoming call screen
+            this.$incomingCallScreen.removeClass('active').fadeOut(300);
+            
+            // Go directly to video call screen
+            setTimeout(() => {
+                this.$videoCallScreen.addClass('active').fadeIn(300);
+                
+                // Set up caller info for Martin Topp
+                this.container.find('#remoteAvatar').text('M');
+                this.container.find('#remoteAvatar').attr('style', 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);');
+                this.container.find('#callerBadgeName').text('Martin Topp');
+                this.container.find('.caller-badge-avatar').text('M');
+                this.container.find('.caller-badge-avatar').attr('style', 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);');
+            }, 300);
+        }
+        
+        declineIncomingCall() {
+            this.$incomingCallScreen.removeClass('active').fadeOut(300);
             setTimeout(() => {
                 this.$homeScreen.addClass('active').fadeIn(300);
             }, 300);
@@ -189,6 +239,13 @@
                     this.container.find('#remoteAvatar').attr('style', gradient);
                 }
                 
+                // Update caller badge in video call
+                this.container.find('#callerBadgeName').text(contactName);
+                this.container.find('.caller-badge-avatar').text(contactAvatar);
+                if (gradient) {
+                    this.container.find('.caller-badge-avatar').attr('style', gradient);
+                }
+                
                 // Show video call screen
                 this.$callingScreen.removeClass('active').fadeOut(300);
                 setTimeout(() => {
@@ -202,26 +259,24 @@
             $button.toggleClass('active');
             
             if ($button.hasClass('active')) {
-                $button.html('🔇');
                 this.showNotification('Microphone muted');
             } else {
-                $button.html('🎤');
                 this.showNotification('Microphone on');
             }
         }
 
         toggleVideo() {
             const $button = this.container.find('#videoButton');
-            const $localVideo = this.container.find('#localVideo');
+            const $localVideo = this.container.find('#localVideo, .local-video-pip');
+            const $overlay = $localVideo.find('.video-hidden-overlay');
             
             $button.toggleClass('active');
-            $localVideo.toggleClass('hidden');
             
             if ($button.hasClass('active')) {
-                $button.html('');
-                this.showNotification('Camera hidden');
+                $overlay.show();
+                this.showNotification('Camera off');
             } else {
-                $button.html('');
+                $overlay.hide();
                 this.showNotification('Camera on');
             }
         }
@@ -242,10 +297,10 @@
             this.animateDynamicIsland();
             
             // Reset controls
-            this.container.find('#muteButton').removeClass('active').html('');
-            this.container.find('#videoButton').removeClass('active').html('');
-            this.container.find('#speakerButton').removeClass('active').html('');
-            this.container.find('#localVideo').removeClass('hidden');
+            this.container.find('#muteButton').removeClass('active');
+            this.container.find('#videoButton').removeClass('active');
+            this.container.find('#speakerButton').removeClass('active');
+            this.container.find('.local-video-pip .video-hidden-overlay').hide();
             
             setTimeout(() => {
                 if (this.tutorialEnabled && this.currentStep < this.tutorialSteps.length - 1) {
@@ -334,12 +389,31 @@
                         buttonText: 'Start Lesson'
                     },
                     {
+                        title: 'Open FaceTime',
+                        description: 'First, find and tap the FaceTime app icon on the home screen to open it.',
+                        highlight: '.app-icon-wrapper[data-app="facetime"]',
+                        action: () => {
+                            // Highlight FaceTime app and wait for user to click it
+                            const $facetimeIcon = this.container.find('.app-icon-wrapper[data-app="facetime"]');
+                            $facetimeIcon.addClass('highlight-element');
+                            
+                            // Wait for user to open FaceTime
+                            $facetimeIcon.one('click', () => {
+                                $facetimeIcon.removeClass('highlight-element');
+                                setTimeout(() => {
+                                    this.nextTutorialStep();
+                                }, 500);
+                            });
+                        },
+                        buttonText: 'Show Me'
+                    },
+                    {
                         title: 'Find the Contact',
                         description: 'Look for Martin in your contacts list. Tap on Martin to select him.',
-                        highlight: '.contact-item[data-contact="martin"]',
+                        highlight: '.contact-card[data-contact="martin"]',
                         action: () => {
                             // Enable clicking on Martin
-                            const $martin = this.container.find('.contact-item[data-contact="martin"]');
+                            const $martin = this.container.find('.contact-card[data-contact="martin"]');
                             $martin.addClass('highlight-element');
                             
                             // Wait for user to click
@@ -353,13 +427,13 @@
                         buttonText: 'Show Me'
                     },
                     {
-                        title: 'Call is Connecting',
-                        description: 'Martin is answering the call. In a moment, you\'ll see the video screen with controls.',
+                        title: 'Video Call Connected',
+                        description: 'Great! Martin answered and you\'re now on a video call. Let\'s learn about the call controls.',
                         action: () => {
-                            // Just wait for call to connect
+                            // Just show this message while on call
                         },
                         buttonText: 'Continue',
-                        autoAdvance: 3000
+                        autoAdvance: 2500
                     },
                     {
                         title: 'Mute Your Microphone',
@@ -438,6 +512,91 @@
                         buttonText: 'Finish Lesson'
                     }
                 ];
+            } else if (this.lesson === 'answer-call') {
+                this.tutorialSteps = [
+                    {
+                        title: 'Incoming FaceTime Call',
+                        description: 'Martin Topp is calling you! Let\'s learn how to answer a FaceTime call.',
+                        action: () => {
+                            // Show incoming call screen
+                        },
+                        buttonText: 'Start Lesson'
+                    },
+                    {
+                        title: 'Answer the Call',
+                        description: 'When someone calls you, you\'ll see their name and two buttons. Tap the green Accept button to answer the call.',
+                        highlight: '#acceptIncomingCall',
+                        action: () => {
+                            // Show incoming call screen
+                            this.showIncomingCall();
+                            
+                            // Highlight accept button
+                            setTimeout(() => {
+                                const $acceptBtn = this.container.find('#acceptIncomingCall');
+                                $acceptBtn.addClass('highlight-element');
+                                
+                                // Wait for user to click accept
+                                $acceptBtn.one('click', () => {
+                                    $acceptBtn.removeClass('highlight-element');
+                                    setTimeout(() => {
+                                        this.nextTutorialStep();
+                                    }, 1000);
+                                });
+                            }, 500);
+                        },
+                        buttonText: 'Show Me'
+                    },
+                    {
+                        title: 'You\'re Connected!',
+                        description: 'Great! You\'re now on a video call with Martin. You can see them on the full screen, and yourself in the small window.',
+                        action: () => {
+                            // Just show message
+                        },
+                        buttonText: 'Continue'
+                    },
+                    {
+                        title: 'Mute Your Microphone',
+                        description: 'During a call, you can mute yourself by tapping the microphone button. Try it now.',
+                        highlight: '#muteButton',
+                        action: () => {
+                            const $muteBtn = this.container.find('#muteButton');
+                            $muteBtn.addClass('highlight-element');
+                            
+                            $muteBtn.one('click', () => {
+                                $muteBtn.removeClass('highlight-element');
+                                setTimeout(() => {
+                                    this.nextTutorialStep();
+                                }, 1500);
+                            });
+                        },
+                        buttonText: 'Show Me'
+                    },
+                    {
+                        title: 'End the Call',
+                        description: 'When you\'re finished, tap the red button at the bottom to end the call.',
+                        highlight: '#endCallButton',
+                        action: () => {
+                            const $endBtn = this.container.find('#endCallButton');
+                            $endBtn.addClass('highlight-element');
+                            
+                            $endBtn.one('click', () => {
+                                $endBtn.removeClass('highlight-element');
+                                setTimeout(() => {
+                                    this.nextTutorialStep();
+                                }, 500);
+                            });
+                        },
+                        buttonText: 'Show Me'
+                    },
+                    {
+                        title: 'Perfect!',
+                        description: 'You now know how to answer incoming FaceTime calls! You can practice anytime.',
+                        action: () => {
+                            this.goHome();
+                        },
+                        buttonText: 'Finish Lesson'
+                    }
+                ];
             }
         }
 
@@ -480,18 +639,8 @@
             // Move to next step
             this.currentStep++;
             
-            // For first step, open FaceTime app after hiding overlay
-            if (this.currentStep === 1) {
-                setTimeout(() => {
-                    this.openApp('facetime');
-                    // Then show next tutorial step after app opens
-                    setTimeout(() => {
-                        this.showTutorialOverlay();
-                    }, 800);
-                }, 300);
-            }
             // Show next tutorial if available and not waiting for user action
-            else if (this.currentStep < this.tutorialSteps.length && !step.highlight) {
+            if (this.currentStep < this.tutorialSteps.length && !step.highlight) {
                 setTimeout(() => {
                     this.showTutorialOverlay();
                 }, step.autoAdvance || 800);

@@ -34,8 +34,9 @@
                             'facetime' => array('name' => 'FaceTime', 'icon' => ''),
                             'messages' => array('name' => 'Messages', 'icon' => ''),
                             'phone' => array('name' => 'Phone', 'icon' => ''),
-                            'facebook' => array('name' => 'Facebook', 'icon' => 'f'),
-                            'twitter' => array('name' => 'Twitter', 'icon' => '𝕏'),
+                            'safari' => array('name' => 'Safari', 'icon' => ''),
+                            'facebook' => array('name' => 'Facebook', 'icon' => ''),
+                            'twitter' => array('name' => 'Twitter', 'icon' => ''),
                             'whatsapp' => array('name' => 'WhatsApp', 'icon' => '')
                         );
                         
@@ -56,13 +57,46 @@
                     
                     <!-- Dock -->
                     <div class="dock">
-                        <div class="app-icon safari" style="background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%); color: white;"></div>
-                        <div class="app-icon mail" style="background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%); color: white;"></div>
-                        <div class="app-icon music" style="background: linear-gradient(135deg, #FF2D55 0%, #D70015 100%); color: white;"></div>
+                        <div class="app-icon-wrapper" data-app="phone">
+                            <div class="app-icon phone"></div>
+                        </div>
+                        <div class="app-icon-wrapper" data-app="messages">
+                            <div class="app-icon messages"></div>
+                        </div>
+                        <div class="app-icon-wrapper" data-app="safari">
+                            <div class="app-icon safari"></div>
+                        </div>
                     </div>
                     
                     <!-- Home Indicator -->
                     <div class="home-indicator"></div>
+                </div>
+                
+                <!-- Incoming Call Screen -->
+                <div class="incoming-call-screen" id="incomingCallScreen">
+                    <div class="incoming-call-overlay">
+                        <div class="incoming-call-header">
+                            <span class="incoming-call-label">FaceTime Video</span>
+                            <h2 class="incoming-caller-name">Martin Topp</h2>
+                        </div>
+                        
+                        <div class="incoming-caller-avatar-large">
+                            <div class="caller-avatar-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">M</div>
+                        </div>
+                        
+                        <div class="incoming-call-actions">
+                            <div class="incoming-action-buttons">
+                                <button class="incoming-btn decline-btn" id="declineIncomingCall">
+                                    <div class="btn-icon decline-icon"></div>
+                                    <span class="btn-label">Decline</span>
+                                </button>
+                                <button class="incoming-btn accept-btn" id="acceptIncomingCall">
+                                    <div class="btn-icon accept-icon"></div>
+                                    <span class="btn-label">Accept</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- FaceTime App -->
@@ -72,41 +106,66 @@
                     <!-- Contact Selection Screen -->
                     <div class="contact-selection active" id="contactSelection">
                         <div class="facetime-header">
+                            <button class="facetime-edit-btn">Edit</button>
                             <h2>FaceTime</h2>
-                            <p class="facetime-subtitle">Video & Audio Calls</p>
+                            <button class="facetime-menu-btn">☰</button>
                         </div>
                         
-                        <input type="text" 
-                               class="contact-search" 
-                               placeholder="Search contacts..."
-                               id="contactSearch">
-                        
-                        <div class="contact-list" id="contactList">
-                                                                                <div class="contacts-list">
-                            <div class="contact-item" data-contact="martin">
-                                <div class="contact-avatar">M</div>
-                                <div class="contact-name">Martin T</div>
-                                <button class="contact-call-button"></button>
+                        <div class="contact-grid" id="contactGrid">
+                            <div class="contact-card" data-contact="martin" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="contact-card-name">Martin</div>
+                                <div class="contact-card-avatar">M</div>
+                                <div class="contact-card-status">
+                                    <span class="video-icon">▶</span> Video<br>Yesterday
+                                </div>
+                                <button class="contact-video-btn"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="david">
-                                <div class="contact-avatar">D</div>
-                                <div class="contact-name">David L</div>
-                                <button class="contact-call-button"></button>
+                            <div class="contact-card" data-contact="david" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <div class="contact-card-name">Antonio</div>
+                                <div class="contact-card-avatar">D</div>
+                                <div class="contact-card-status">
+                                    <span class="video-icon">▶</span> Video<br>Yesterday
+                                </div>
+                                <button class="contact-video-btn"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="maggie">
-                                <div class="contact-avatar">M</div>
-                                <div class="contact-name">Maggie T</div>
-                                <button class="contact-call-button"></button>
+                            <div class="contact-card" data-contact="maggie" style="background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);">
+                                <div class="contact-card-name">Danny</div>
+                                <div class="contact-card-avatar">M</div>
+                                <div class="contact-card-status">
+                                    <span class="video-icon">▶</span> 00:09<br>Yesterday
+                                </div>
+                                <button class="contact-video-btn"></button>
                             </div>
                             
-                            <div class="contact-item" data-contact="avery">
-                                <div class="contact-avatar">A</div>
-                                <div class="contact-name">Avery H</div>
-                                <button class="contact-call-button"></button>
+                            <div class="contact-card" data-contact="avery" style="background: linear-gradient(135deg, #feca57 0%, #ee5a24 100%);">
+                                <div class="contact-card-name">Brian</div>
+                                <div class="contact-card-avatar">A</div>
+                                <div class="contact-card-status">
+                                    <span class="video-icon">▶</span> Video<br>Yesterday
+                                </div>
+                                <button class="contact-video-btn"></button>
                             </div>
-                        </div>
+                            
+                            <div class="contact-card" data-contact="alicia" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <div class="contact-card-name">Alicia</div>
+                                <div class="contact-card-avatar">AL</div>
+                                <div class="contact-card-status">
+                                    <span class="video-icon">▶</span> Video<br>Yesterday
+                                </div>
+                                <button class="contact-video-btn"></button>
+                            </div>
+                            
+                            <div class="contact-card" data-contact="alejandra" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                <div class="contact-card-name">Alejandra</div>
+                                <div class="contact-card-avatar">AJ</div>
+                                <div class="contact-card-status">
+                                    <button class="new-call-btn">
+                                        <span class="video-camera-icon"></span> New Call
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -125,25 +184,32 @@
                     
                     <!-- Video Call Screen -->
                     <div class="video-call-screen" id="videoCallScreen">
-                        <div class="remote-video">
+                        <!-- Full screen remote video -->
+                        <div class="remote-video-fullscreen">
                             <div class="remote-avatar" id="remoteAvatar">M</div>
                         </div>
                         
-                        <div class="local-video" id="localVideo">
-                            <div class="video-hidden-overlay">Camera Off</div>
+                        <!-- Top bar with caller info -->
+                        <div class="video-call-header">
+                            <div class="caller-badge">
+                                <div class="caller-badge-avatar">M</div>
+                                <span class="caller-badge-name" id="callerBadgeName">Charlie</span>
+                            </div>
+                            <button class="video-expand-btn">⚪</button>
                         </div>
                         
-                        <div class="call-controls">
-                            <button class="control-button flip" id="flipButton" title="Flip Camera">
-                            </button>
-                            <button class="control-button speaker" id="speakerButton" title="Speaker">
-                            </button>
-                            <button class="control-button mute" id="muteButton" title="Mute/Unmute">
-                            </button>
-                            <button class="control-button video" id="videoButton" title="Hide/Show Camera">
-                            </button>
-                            <button class="control-button end-call" id="endCallButton" title="End Call">
-                            </button>
+                        <!-- Local video (picture-in-picture) -->
+                        <div class="local-video-pip" id="localVideo">
+                            <div class="video-hidden-overlay">Camera Off</div>
+                            <button class="pip-camera-toggle">📷</button>
+                        </div>
+                        
+                        <!-- Vertical control buttons on right side -->
+                        <div class="video-call-controls">
+                            <button class="video-control-btn video-btn" id="videoButton" title="Hide/Show Camera"></button>
+                            <button class="video-control-btn mute-btn" id="muteButton" title="Mute/Unmute"></button>
+                            <button class="video-control-btn more-btn" id="moreButton" title="More Options">•••</button>
+                            <button class="video-control-btn end-btn" id="endCallButton" title="End Call">✕</button>
                         </div>
                     </div>
                 </div>

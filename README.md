@@ -78,7 +78,7 @@ Add the simulator to any page or post:
   - Default: `facetime`
 
 - `lesson` - Tutorial type to display
-  - Options: `call-martin` (more coming soon)
+  - Options: `call-martin`, `answer-call`
   - Default: `call-martin`
 
 - `tutorial` - Enable tutorial mode
@@ -111,13 +111,23 @@ Go to **WordPress Admin → iPhone Simulator** to configure:
 
 ## 🎓 Available Lessons
 
-### FaceTime: Call Martin
+### FaceTime: Call Martin (`lesson="call-martin"`)
 A complete tutorial teaching users how to:
 1. Open the FaceTime app
 2. Select a contact (Martin)
 3. Start the video call
 4. Mute/unmute the microphone
 5. Hide/show the camera
+6. Use speaker mode
+7. End the call
+
+### FaceTime: Answer Call (`lesson="answer-call"`)
+A tutorial teaching users how to:
+1. Recognize an incoming FaceTime call from Martin Topp
+2. Accept the call using the green button
+3. Understand the video call interface
+4. Mute/unmute during a call
+5. End the call properly
 6. End the call
 
 ### Coming Soon
