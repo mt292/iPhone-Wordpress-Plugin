@@ -161,12 +161,16 @@
                                 <div class="contact-card-name">Alejandra</div>
                                 <div class="contact-card-avatar">AJ</div>
                                 <div class="contact-card-status">
-                                    <button class="new-call-btn">
-                                        <span class="video-camera-icon"></span> New Call
-                                    </button>
+                                    <span class="video-icon">▶</span> Video<br>Yesterday
                                 </div>
+                                <button class="contact-video-btn"></button>
                             </div>
                         </div>
+                        
+                        <!-- New Call Button -->
+                        <button class="new-call-btn-bottom">
+                            <span class="video-camera-icon"></span> NEW CALL
+                        </button>
                     </div>
                     
                     <!-- Calling Screen -->
@@ -206,8 +210,18 @@
                         
                         <!-- Vertical control buttons on right side -->
                         <div class="video-call-controls">
-                            <button class="video-control-btn video-btn" id="videoButton" title="Hide/Show Camera"></button>
-                            <button class="video-control-btn mute-btn" id="muteButton" title="Mute/Unmute"></button>
+                            <button class="video-control-btn video-btn" id="videoButton" title="Hide/Show Camera">
+                                <svg width="24" height="20" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 4C0 1.79086 1.79086 0 4 0H13C15.2091 0 17 1.79086 17 4V16C17 18.2091 15.2091 20 13 20H4C1.79086 20 0 18.2091 0 16V4Z" fill="#1c1c1e"/>
+                                    <path d="M17 6L23 2V18L17 14V6Z" fill="#1c1c1e"/>
+                                </svg>
+                            </button>
+                            <button class="video-control-btn mute-btn" id="muteButton" title="Mute/Unmute">
+                                <svg width="18" height="24" viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0C6.79086 0 5 1.79086 5 4V12C5 14.2091 6.79086 16 9 16C11.2091 16 13 14.2091 13 12V4C13 1.79086 11.2091 0 9 0Z" fill="#1c1c1e"/>
+                                    <path d="M3 10V12C3 15.866 6.13401 19 10 19V22H8V24H10H12V22H10V19C13.866 19 17 15.866 17 12V10H15V12C15 14.7614 12.7614 17 10 17C7.23858 17 5 14.7614 5 12V10H3Z" fill="#1c1c1e"/>
+                                </svg>
+                            </button>
                             <button class="video-control-btn more-btn" id="moreButton" title="More Options">•••</button>
                             <button class="video-control-btn end-btn" id="endCallButton" title="End Call">✕</button>
                         </div>

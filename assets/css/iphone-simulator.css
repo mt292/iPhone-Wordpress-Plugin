@@ -529,7 +529,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 12px 16px 100px;
+    padding: 12px 16px 24px;
 }
 
 .contact-card {
@@ -635,6 +635,37 @@
     background: white;
     clip-path: polygon(0 0, 70% 0, 70% 25%, 100% 0, 100% 100%, 70% 75%, 70% 100%, 0 100%);
     display: inline-block;
+}
+
+/* New Call Button at Bottom */
+.new-call-btn-bottom {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #30d158;
+    border: none;
+    border-radius: 20px;
+    padding: 16px 36px;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.new-call-btn-bottom:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.new-call-btn-bottom .video-camera-icon {
+    width: 20px;
+    height: 16px;
 }
 
 /* Old Contact List Styles - Keep for backwards compatibility but hide */
@@ -858,17 +889,17 @@
 /* Vertical Control Buttons (Right Side) */
 .video-call-controls {
     position: absolute;
-    right: 16px;
-    bottom: 80px;
+    right: 20px;
+    bottom: 100px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     z-index: 100;
 }
 
 .video-control-btn {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     border: none;
     display: flex;
@@ -878,6 +909,7 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
     position: relative;
+    flex-shrink: 0;
 }
 
 .video-control-btn:active {
@@ -886,29 +918,22 @@
 
 /* Video Button (Camera) */
 .video-control-btn.video-btn {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.video-control-btn.video-btn::before {
-    content: '';
-    width: 22px;
-    height: 18px;
-    background: #1c1c1e;
-    clip-path: polygon(0 0, 65% 0, 65% 20%, 100% 0, 100% 100%, 65% 80%, 65% 100%, 0 100%);
-}
-
-.video-control-btn.video-btn.active {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.video-control-btn.video-btn.active::before {
-    background: #1c1c1e;
+.video-control-btn.video-btn svg {
+    display: block;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .video-control-btn.video-btn.active::after {
     content: '';
     position: absolute;
-    width: 32px;
+    width: 36px;
     height: 3px;
     background: #ff3b30;
     transform: rotate(-45deg);
@@ -916,27 +941,22 @@
 
 /* Mute Button (Microphone) */
 .video-control-btn.mute-btn {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.video-control-btn.mute-btn::before {
-    content: '';
-    width: 16px;
-    height: 22px;
-    background: #1c1c1e;
-    clip-path: polygon(
-        30% 0, 70% 0, 70% 60%, 75% 60%, 75% 70%, 55% 70%, 55% 85%, 60% 85%, 60% 100%, 40% 100%, 40% 85%, 45% 85%, 45% 70%, 25% 70%, 25% 60%, 30% 60%
-    );
-}
-
-.video-control-btn.mute-btn.active {
-    background: rgba(255, 255, 255, 0.9);
+.video-control-btn.mute-btn svg {
+    display: block;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .video-control-btn.mute-btn.active::after {
     content: '';
     position: absolute;
-    width: 32px;
+    width: 36px;
     height: 3px;
     background: #ff3b30;
     transform: rotate(-45deg);
@@ -944,11 +964,11 @@
 
 /* More Options Button */
 .video-control-btn.more-btn {
-    background: rgba(60, 60, 67, 0.8);
+    background: rgba(60, 60, 67, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     color: white;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     letter-spacing: 1px;
     line-height: 0.5;
@@ -958,17 +978,9 @@
 .video-control-btn.end-btn {
     background: #ff3b30;
     color: white;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 300;
     line-height: 0.5;
-}
-
-/* End Call Button (Red) */
-.video-control-btn.end-btn {
-    background: #ff3b30;
-    color: white;
-    font-size: 28px;
-    font-weight: 300;
 }
 
 /* Old local-video class for backwards compatibility */
@@ -1321,18 +1333,25 @@
     left: 20px;
     background: rgba(44, 44, 46, 0.8);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: 300;
     cursor: pointer;
     z-index: 100;
     transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .app-back-button:active {

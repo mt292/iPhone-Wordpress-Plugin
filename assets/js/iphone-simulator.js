@@ -307,8 +307,8 @@
                     // Show next tutorial step
                     this.nextTutorialStep();
                 } else {
-                    // Go back to contact selection
-                    this.$contactSelection.addClass('active').fadeIn(300);
+                    // Go back to home screen
+                    this.goHome();
                 }
             }, 300);
         }
